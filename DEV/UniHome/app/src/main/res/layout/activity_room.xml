@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context=".RoomActivity">
+
+    <ImageView
+        android:id="@+id/room_exit_arrow_iv"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="25dp"
+        android:src="@drawable/exit_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/room_unihome_logo_iv"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="0dp"
+        android:contentDescription="@string/unihome_logo"
+        android:src="@drawable/uni_home_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/line_separator_v"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/keppel"
+        app:layout_constraintTop_toBottomOf="@id/room_unihome_logo_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/room_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColor="@color/lightBrown"
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_separator_v"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/room_image_iv"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@string/unihome_logo"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/single_bedroom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/room_title_tv"/>
+
+    <TextView
+        android:id="@+id/room_price_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textColor="@color/keppel"
+        android:layout_marginTop="40dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/price"
+        app:layout_constraintStart_toEndOf="@id/room_image_iv"
+        app:layout_constraintTop_toBottomOf="@+id/room_title_tv"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/room_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textColor="@color/lightBrown"
+        android:layout_marginTop="35dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/room_image_iv"
+        app:layout_constraintTop_toBottomOf="@+id/room_price_title_tv"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/room_description_tv"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightBrown"
+        android:layout_marginTop="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/room_image_iv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/room_apply_bt"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/lightBrown"
+        android:textColor="@color/beige"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="@string/apply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/room_description_tv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

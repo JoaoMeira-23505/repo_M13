@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Rent API
+  description: API endpoints for managing rents
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listRents:
+    get:
+      summary: Retrieve all rents
+      responses:
+        '200':
+          description: A list of rents
+      security:
+        - bearerAuth: [ ]
+
+  /listRent/{ID}:
+    get:
+      summary: Retrieve a single rent by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the rent to retrieve
+      responses:
+        '200':
+          description: A single rent object
+        '404':
+          description: Rent not found
+      security:
+        - bearerAuth: [ ]
+
+  /createRent:
+    post:
+      summary: Create a new rent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the user renting
+                RoomID:
+                  type: number
+                  minimum: 1
+                  description: ID of the room to be rented
+      responses:
+        '201':
+          description: Rent created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: [ ]
+
+  /updateRent/{ID}:
+    put:
+      summary: Update a rent by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the rent to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - "Active"
+                    - "Inactive"
+                  description: status of the renting
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the user renting
+                RoomID:
+                  type: number
+                  minimum: 1
+                  description: ID of the room to be rented
+      responses:
+        '200':
+          description: Rent updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Rent not found
+      security:
+        - bearerAuth: [ ]
+
+  /deleteRent/{ID}:
+    delete:
+      summary: Delete a rent by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the rent to delete
+      responses:
+        '204':
+          description: Rent deleted successfully
+        '404':
+          description: Rent not found
+      security:
+        - bearerAuth: [ ]

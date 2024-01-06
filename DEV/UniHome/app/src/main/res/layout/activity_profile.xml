@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context=".ProfileActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/profile_exit_arrow_iv"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="30dp"
+                            android:src="@drawable/exit_arrow"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/profile_cog_wheel_iv"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:src="@drawable/cog_wheel"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/circleButton"
+                            android:layout_width="130dp"
+                            android:layout_height="130dp"
+                            android:layout_marginTop="40dp"
+                            android:background="@drawable/circle_background"
+                            app:layout_constraintBottom_toTopOf="@+id/profile_name_tv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/profile_icon_iv"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/baseline_person_24"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/circleButton" />
+
+                        <TextView
+                            android:id="@+id/profile_name_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/username_profile"
+                            android:textColor="@color/lightBrown"
+                            android:textSize="30sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_icon_iv" />
+
+                        <TextView
+                            android:id="@+id/profile_phone_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/phone_number"
+                            android:textColor="@color/lightBrown"
+                            android:textSize="20sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_name_tv" />
+
+
+                        <LinearLayout
+                            android:id="@+id/edit_profile_background_shape_tv"
+                            android:layout_width="350dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="50dp"
+                            android:background="@drawable/rectangle_background"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_phone_tv">
+
+                                <TextView
+                                    android:id="@+id/profile_email_title_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="20dp"
+                                    android:text="@string/email"
+                                    android:textColor="@color/lightBrown"
+                                    android:textStyle="bold"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/profile_email_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:textColor="@color/lightBrown"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/profile_residence_title_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@string/residence"
+                                    android:textColor="@color/lightBrown"
+                                    android:textStyle="bold"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/profile_residence_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:textColor="@color/lightBrown"
+                                    android:textStyle="bold"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/profile_gender_title_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@string/gender"
+                                    android:textColor="@color/lightBrown"
+                                    android:textStyle="bold"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/profile_gender_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:textColor="@color/lightBrown"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/profile_nationality_title_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:text="@string/nationality"
+                                    android:textColor="@color/lightBrown"
+                                    android:textStyle="bold"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/profile_nationality_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:textColor="@color/lightBrown"
+                                    android:textSize="16sp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:layout_marginBottom="20dp">
+
+                                        <TextView
+                                            android:id="@+id/profile_notification_title_tv"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/notification"
+                                            android:textColor="@color/lightBrown"
+                                            android:textStyle="bold"
+                                            android:textSize="20sp" />
+
+                                        <Switch
+                                            android:id="@+id/profile_notifications_sw"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:checked="true"
+                                            android:switchMinWidth="60dp"
+                                            android:theme="@style/SwitchStyle" />
+                                </LinearLayout>
+                        </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

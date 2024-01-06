@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    android:id="@+id/home_activity_ct"
+    tools:context=".HomeActivity">
+
+    <ImageView
+        android:id="@+id/home_unihome_logo_iv"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="0dp"
+        android:contentDescription="@string/unihome_logo"
+        android:src="@drawable/uni_home_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/home_menu_icon_iv"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="150dp"
+        android:contentDescription="@string/unihome_logo"
+        android:src="@drawable/baseline_menu_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/home_unihome_logo_iv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/home_profile_icon_iv"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="150dp"
+        android:contentDescription="@string/unihome_logo"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/home_unihome_logo_iv" />
+
+    <View
+        android:id="@+id/line_separator_v"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/keppel"
+        app:layout_constraintTop_toBottomOf="@id/home_unihome_logo_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/home_unihome_text_logo_iv"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/unihome_logo"
+        android:src="@drawable/unihome_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/line_separator_v"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/home_about_us_text_tv"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:text="@string/Lorum40"
+        android:textColor="@color/lightBrown"
+        android:layout_marginTop="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_unihome_text_logo_iv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/home_menu_ll"
+        android:layout_width="310dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle_menu_background"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_separator_v"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/home_menu_chat_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/chats"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_my_room_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/my_room"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_rooms_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/choose_room"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_payment_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/payment"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_cleaning_service_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/cleaning_service"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_cleaning_list_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/cleaning_list"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_check_applications_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/check_applications"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_list_renters_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/list_renters"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_list_residences_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/list_residences"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+                <Button
+                    android:id="@+id/home_menu_logout_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightBrown"
+                    android:textColor="@color/beige"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="@string/log_out"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

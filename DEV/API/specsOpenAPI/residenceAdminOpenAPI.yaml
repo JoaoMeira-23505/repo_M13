@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: ResidenceAdmin API
+  description: API endpoints for managing residence admins
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listResidenceAdmins:
+    get:
+      summary: Retrieve all residence admins
+      responses:
+        '200':
+          description: A list of residence admins
+      security:
+        - bearerAuth: [ ]
+
+  /listResidenceAdmin/{ID}:
+    get:
+      summary: Retrieve a single residence admin by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the residence admin to retrieve
+      responses:
+        '200':
+          description: A single residence admin object
+        '404':
+          description: Residence Admin not found
+      security:
+        - bearerAuth: [ ]
+
+  /createResidenceAdmin:
+    post:
+      summary: Create a new residence admin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the admin
+                ResidenceID:
+                  type: number
+                  minimum: 1
+                  description: ID of the residence
+      responses:
+        '201':
+          description: ResidenceAdmin created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: [ ]
+
+  /updateResidenceAdmin/{ID}:
+    put:
+      summary: Update a residence admin by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the residence admin to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                endDate:
+                  type: string
+                  format: date
+                  description: end date of the admin in a residence
+      responses:
+        '200':
+          description: Residence Admin updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Residence Admin not found
+      security:
+        - bearerAuth: [ ]
+
+  /deleteResidenceAdmin/{ID}:
+    delete:
+      summary: Delete a residence admin by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the residence admin to delete
+      responses:
+        '204':
+          description: Residence Admin deleted successfully
+        '404':
+          description: Residence Admin not found
+      security:
+        - bearerAuth: [ ]
+

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1007003344213",
+    "project_id": "unihome-32de5",
+    "storage_bucket": "unihome-32de5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007003344213:android:7e304018f2f95c97e363dc",
+        "android_client_info": {
+          "package_name": "com.example.unihome"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZwMQZXWuxyIhpwZhA4kvjCr_AXIQk_uQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

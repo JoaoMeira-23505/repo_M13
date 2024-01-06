@@ -1,0 +1,56 @@
+cliente --> 
+-criar conta (login/register);
+-fitros na pesquisa (numeros de camas, cozinha, localização, lavandaria, ...);
+-alugar quartos (fotos, videos, ver informações, ...);
+-quartos sozinhos/partilhados...;
+-cancelar inscrição;
+-pagamentos da residencia;
+-fazer denuncias/avarias;
+-pagina de regras da residencia;
+
+---agendar tour do quarto escolhido???
+-agendar limpeza (com calendario, limite 1 vez por semana);
+-notificações
+
+
+-correio/encomendas para o receção (de forma a mandar notificação ao receber)??
+-smart lock; ??
+-controlo do quarto pela app (aquecimento, ...)
+
+
+administrador-->
+-Consultar inscrições;
+-Verificar informações;
+-Fazer denuncias (partir objeto = falar uni.)
+-consultar denuncias;
+
+
+
+
+Swot:
+S:
+Boa organização da equipa
+Inovativ Ideia
+W:
+New programming language (Kotlin)
+short time to develop
+O:
+O mercado das casas estudantes está caro
+O aumento de estudantes que procuram casas
+T:
+O mercado de arrrendamento está instavel
+Competição com ideias parecidas
+Pouco tempo, requer deixar boas ideais para tras
+
+
+Stakeholders:
+Estudantes
+Universidades/Politecnicos
+Espresas de contrução
+"" de Limpezas 
+fornecedores
+Admin/..
+empresas de Seguranças
+Vizinhaça
+Investidores (Unis, camaras, governo)
+

@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: RoomType API
+  description: API endpoints for managing room types
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listRoomTypes:
+    get:
+      summary: Retrieve all room types
+      responses:
+        '200':
+          description: A list of room types
+
+  /listRoomType/{ID}:
+    get:
+      summary: Retrieve a single room type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the room type to retrieve
+      responses:
+        '200':
+          description: A single room type object
+        '404':
+          description: RoomType not found
+
+  /createRoomType:
+    post:
+      summary: Create a new room type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the room type
+                description:
+                  type: string
+                  description: Description of the room type
+      responses:
+        '201':
+          description: RoomType created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: [ ]
+
+  /updateRoomType/{ID}:
+    put:
+      summary: Update a room type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the room type to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: status of the room type
+      responses:
+        '200':
+          description: RoomType updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: RoomType not found
+      security:
+        - bearerAuth: [ ]
+
+  /deleteRoomType/{ID}:
+    delete:
+      summary: Delete a room type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the room type to delete
+      responses:
+        '204':
+          description: RoomType deleted successfully
+        '404':
+          description: RoomType not found
+      security:
+        - bearerAuth: [ ]
+

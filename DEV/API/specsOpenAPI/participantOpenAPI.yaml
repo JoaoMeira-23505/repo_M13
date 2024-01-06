@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: Participant API
+  description: API endpoints for managing participants
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listParticipants:
+    get:
+      summary: Retrieve all participants
+      responses:
+        '200':
+          description: A list of participants
+      security:
+        - bearerAuth: []
+
+  /listParticipantsByChatID/{ChatID}:
+    get:
+      summary: Retrieve participants by ChatID
+      parameters:
+        - in: path
+          name: ChatID
+          required: true
+          schema:
+            type: string
+          description: ID of the chat to get participants for
+      responses:
+        '200':
+          description: A list of participants for the specified chat
+        '404':
+          description: Chat not found
+      security:
+        - bearerAuth: []
+
+  /listParticipant/{ID}:
+    get:
+      summary: Retrieve a single participant by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the participant to retrieve
+      responses:
+        '200':
+          description: A single participant object
+        '404':
+          description: Participant not found
+      security:
+        - bearerAuth: []
+
+  /createParticipant:
+    post:
+      summary: Create a new participant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the user associated with the participant
+                ChatID:
+                  type: number
+                  minimum: 1
+                  description: ID of the chat associated with the participant
+      responses:
+        '201':
+          description: Participant created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: []
+
+  /updateParticipant/{ID}:
+    put:
+      summary: Update a participant by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the participant to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the user associated with the participant
+                ChatID:
+                  type: number
+                  minimum: 1
+                  description: ID of the chat associated with the participant
+      responses:
+        '200':
+          description: Participant updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Participant not found
+      security:
+        - bearerAuth: []
+
+  /deleteParticipant/{ID}:
+    delete:
+      summary: Delete a participant by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the participant to delete
+      responses:
+        '204':
+          description: Participant deleted successfully
+        '404':
+          description: Participant not found
+      security:
+        - bearerAuth: []

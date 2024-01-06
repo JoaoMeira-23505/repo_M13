@@ -1,0 +1,132 @@
+openapi: 3.0.3
+info:
+  title: Room API
+  description: API endpoints for managing rooms
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listRooms:
+    get:
+      summary: Retrieve all rooms
+      responses:
+        '200':
+          description: A list of rooms
+      security:
+        - bearerAuth: [ ]
+
+  /listRoom/{ID}:
+    get:
+      summary: Retrieve a single room by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the room to retrieve
+      responses:
+        '200':
+          description: A single room object
+        '404':
+          description: Room not found
+      security:
+        - bearerAuth: [ ]
+
+  /createRoom:
+    post:
+      summary: Create a new room
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                doorNumber:
+                  type: string
+                  description: Door number of the room
+                floor:
+                  type: string
+                  description: Floor of the room
+                roomPhoto:
+                  type: string
+                  description: Room Photo of the room
+                ResidenceID:
+                  type: number
+                  minimum: 1
+                  description: ID of the residence
+                RoomTypeID:
+                  type: number
+                  minimum: 1
+                  description: ID of the room type
+      responses:
+        '201':
+          description: Room created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: [ ]
+
+  /updateRoom/{ID}:
+    put:
+      summary: Update a room by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the room to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - "Occupied"
+                    - "SemiOccupied"
+                    - "Unoccupied"
+                  description: status of the room
+      responses:
+        '200':
+          description: Room updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Room not found
+      security:
+        - bearerAuth: [ ]
+
+  /deleteRoom/{ID}:
+    delete:
+      summary: Delete a room by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the room to delete
+      responses:
+        '204':
+          description: Room deleted successfully
+        '404':
+          description: Room not found
+      security:
+        - bearerAuth: [ ]
+

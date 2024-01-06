@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="beige">#F5ECE0</color>
+    <color name="lightBrown">#7F675B</color>
+    <color name="lightBrown2">#8F786D</color>
+    <color name="lightBlue1">#B0E0E6</color>
+    <color name="blue">#3498db</color>
+    <color name="cornflowerBlue">#6495ED</color>
+    <color name="invisible">#00FFFFFF</color>
+    <color name="westar">#D0C7C2</color>
+    <color name="keppel">#6CBAA5</color>
+</resources>

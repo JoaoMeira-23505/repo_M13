@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Residence API
+  description: API endpoints for managing residences
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listResidences:
+    get:
+      summary: Retrieve all residences
+      responses:
+        '200':
+          description: A list of residences
+
+  /listResidence/{ID}:
+    get:
+      summary: Retrieve a single residence by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the residence to retrieve
+      responses:
+        '200':
+          description: A single residence object
+        '404':
+          description: Residence not found
+
+  /createResidence:
+    post:
+      summary: Create a new residence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the residence
+                location:
+                  type: string
+                  description: Location of the residence
+                phoneNumber:
+                  type: string
+                  description: Phone number of the residence
+      responses:
+        '201':
+          description: Residence created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: [ ]
+
+  /updateResidence/{ID}:
+    put:
+      summary: Update a residence by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the residence to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                endDate:
+                  type: string
+                  format: date
+                  description: end date of the admin in a residence
+      responses:
+        '200':
+          description: Residence updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Residence not found
+      security:
+        - bearerAuth: [ ]
+
+  /deleteResidence/{ID}:
+    delete:
+      summary: Delete a residence by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the residence to delete
+      responses:
+        '204':
+          description: Residence deleted successfully
+        '404':
+          description: Residence not found
+      security:
+        - bearerAuth: [ ]
+

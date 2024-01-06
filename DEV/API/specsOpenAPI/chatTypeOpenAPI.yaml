@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: ChatType API
+  description: API endpoints for managing chat types
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listChatTypes:
+    get:
+      summary: Retrieve all chat types
+      responses:
+        '200':
+          description: A list of chat types
+
+  /listChatType/{ID}:
+    get:
+      summary: Retrieve a single chat type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the chat type to retrieve
+      responses:
+        '200':
+          description: A single chat type object
+        '404':
+          description: Chat type not found
+
+  /createChatType:
+    post:
+      summary: Create a new chat type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the chat type
+      responses:
+        '201':
+          description: Chat type created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: []
+
+  /updateChatType/{ID}:
+    put:
+      summary: Update a chat type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the chat type to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the chat type
+      responses:
+        '200':
+          description: Chat type updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Chat type not found
+      security:
+        - bearerAuth: []
+
+  /deleteChatType/{ID}:
+    delete:
+      summary: Delete a chat type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the chat type to delete
+      responses:
+        '204':
+          description: Chat type deleted successfully
+        '404':
+          description: Chat type not found
+      security:
+        - bearerAuth: []

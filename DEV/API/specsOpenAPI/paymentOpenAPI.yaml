@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: Payment API
+  description: API endpoints for managing payments
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listPayments:
+    get:
+      summary: Retrieve all payments
+      responses:
+        '200':
+          description: A list of payments
+      security:
+        - bearerAuth: []
+
+  /listPaymentsByUserID/{UserID}:
+    get:
+      summary: Retrieve payments by UserID
+      parameters:
+        - in: path
+          name: UserID
+          required: true
+          schema:
+            type: string
+          description: ID of the user to get payments for
+      responses:
+        '200':
+          description: A list of payments for the specified user
+        '404':
+          description: User not found
+      security:
+        - bearerAuth: []
+
+  /listPayment/{ID}:
+    get:
+      summary: Retrieve a single payment by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the payment to retrieve
+      responses:
+        '200':
+          description: A single payment object
+        '404':
+          description: Payment not found
+      security:
+        - bearerAuth: []
+
+  /createPayment:
+    post:
+      summary: Create a new payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Description of the payment
+                value:
+                  type: number
+                  description: Payment amount
+                PaymentTypeID:
+                  type: number
+                  minimum: 1
+                  description: ID of the payment type
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the user associated with the payment
+      responses:
+        '201':
+          description: Payment created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: []
+
+  /updatePayment/{ID}:
+    put:
+      summary: Update a payment by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the payment to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Description of the payment
+                value:
+                  type: number
+                  description: Payment amount
+                status:
+                  type: string
+                  enum:
+                    - "Pending",
+                    - "Fine",
+                    - "Paid"
+                  description: Payment status
+                paymentDate:
+                  type: string
+                  format: date
+                  description: Payment date
+      responses:
+        '200':
+          description: Payment updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Payment not found
+      security:
+        - bearerAuth: []
+
+  /deletePayment/{ID}:
+    delete:
+      summary: Delete a payment by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the payment to delete
+      responses:
+        '204':
+          description: Payment deleted successfully
+        '404':
+          description: Payment not found
+      security:
+        - bearerAuth: []

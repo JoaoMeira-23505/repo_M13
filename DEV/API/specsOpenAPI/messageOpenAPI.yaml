@@ -1,0 +1,139 @@
+openapi: 3.0.3
+info:
+  title: Message API
+  description: API endpoints for managing messages
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listMessages:
+    get:
+      summary: Retrieve all messages
+      responses:
+        '200':
+          description: A list of messages
+      security:
+        - bearerAuth: []
+
+  /listMessagesByChatId/{ID}:
+    get:
+      summary: Retrieve messages by ChatID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the chat to get messages for
+      responses:
+        '200':
+          description: A list of messages for the specified chat
+        '404':
+          description: Chat not found
+      security:
+        - bearerAuth: []
+
+  /listMessage/{ID}:
+    get:
+      summary: Retrieve a single message by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the message to retrieve
+      responses:
+        '200':
+          description: A single message object
+        '404':
+          description: Message not found
+      security:
+        - bearerAuth: []
+
+  /createMessage:
+    post:
+      summary: Create a new message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Text of the message
+                ChatID:
+                  type: number
+                  minimum: 1
+                  description: ID of the chat associated with the message
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the user associated with the message
+      responses:
+        '201':
+          description: Message created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: []
+
+  /updateMessage/{ID}:
+    put:
+      summary: Update a message by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the message to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Text of the message
+      responses:
+        '200':
+          description: Message updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Message not found
+      security:
+        - bearerAuth: []
+
+  /deleteMessage/{ID}:
+    delete:
+      summary: Delete a message by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the message to delete
+      responses:
+        '204':
+          description: Message deleted successfully
+        '404':
+          description: Message not found
+      security:
+        - bearerAuth: []

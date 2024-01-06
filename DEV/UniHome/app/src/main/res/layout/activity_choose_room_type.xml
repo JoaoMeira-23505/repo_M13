@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context=".ChooseRoomTypeActivity">
+
+    <ImageView
+        android:id="@+id/room_exit_arrow_iv"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/exit_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/home_unihome_logo_iv"
+        android:layout_width="45dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="0dp"
+        android:contentDescription="@string/unihome_logo"
+        android:src="@drawable/uni_home_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/line_separator_v"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/keppel"
+        app:layout_constraintTop_toBottomOf="@id/home_unihome_logo_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/chooseroom_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/choose_room_title"
+        android:textColor="@color/lightBrown"
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_separator_v"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/chooseroom_type_ss_iv"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="55dp"
+        android:src="@drawable/baseline_single_bed_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chooseroom_title_tv" />
+
+    <Button
+        android:id="@+id/chooseroom_type_ss_bt"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="25dp"
+        android:backgroundTint="@color/lightBrown"
+        android:textColor="@color/beige"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chooseroom_type_ss_iv" />
+
+    <ImageView
+        android:id="@+id/chooseroom_type_sd_iv"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="55dp"
+        android:src="@drawable/baseline_single_bed_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chooseroom_title_tv"/>
+
+    <Button
+        android:id="@+id/chooseroom_type_sd_bt"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="@color/lightBrown"
+        android:textColor="@color/beige"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chooseroom_type_sd_iv" />
+
+    <ImageView
+        android:id="@+id/chooseroom_type_ps_iv"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="55dp"
+        android:src="@drawable/baseline_bed_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chooseroom_type_ss_bt" />
+
+    <Button
+        android:id="@+id/chooseroom_type_ps_bt"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="25dp"
+        android:backgroundTint="@color/lightBrown"
+        android:textColor="@color/beige"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chooseroom_type_ps_iv" />
+
+    <ImageView
+        android:id="@+id/chooseroom_type_pd_iv"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="55dp"
+        android:src="@drawable/baseline_bed_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chooseroom_type_sd_bt" />
+
+    <Button
+        android:id="@+id/chooseroom_type_pd_bt"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="@color/lightBrown"
+        android:textColor="@color/beige"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chooseroom_type_pd_iv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

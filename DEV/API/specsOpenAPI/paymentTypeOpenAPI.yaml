@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: Payment Type API
+  description: API endpoints for managing payments types
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listPaymentTypes:
+    get:
+      summary: Retrieve all payments types
+      responses:
+        '200':
+          description: A list of payments types
+
+  /listPaymentType/{ID}:
+    get:
+      summary: Retrieve a single payment type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the payment type to retrieve
+      responses:
+        '200':
+          description: A single payment type object
+        '404':
+          description: Payment type not found
+
+  /createPaymentType:
+    post:
+      summary: Create a new payment type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the payment type
+                description:
+                  type: string
+                  description: Description of the payment type
+      responses:
+        '201':
+          description: Payment created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: [ ]
+
+  /updatePaymentType/{ID}:
+    put:
+      summary: Update a payment by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the payment to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the payment type
+                description:
+                  type: string
+                  description: Description of the payment type
+      responses:
+        '200':
+          description: Payment updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Payment not found
+      security:
+        - bearerAuth: [ ]
+
+  /deletePaymentType/{ID}:
+    delete:
+      summary: Delete a payment by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the payment to delete
+      responses:
+        '204':
+          description: Payment deleted successfully
+        '404':
+          description: Payment not found
+      security:
+        - bearerAuth: [ ]

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.NFC" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/uni_home_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/uni_home_logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.UniHome"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".CreateResidenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".ApplicationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllResidencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllRentersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllApplicationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllCleaningsByUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllCleaningsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChooseRoomTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FormsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllPaymentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScheduleCleaningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllChatsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

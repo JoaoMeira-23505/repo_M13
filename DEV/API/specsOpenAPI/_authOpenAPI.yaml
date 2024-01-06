@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  title: Authentication API
+  description: API endpoints for managing payments
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+paths:
+  /authLogin:
+    post:
+      summary: Login a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email of the user
+                password:
+                  type: string
+                  description: Password of the user
+      responses:
+        '201':
+          description: Payment created successfully
+        '400':
+          description: Invalid request
+        '403':
+          description: Invalid login
+
+  /authRegister:
+    post:
+      summary: Register a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the new user
+                email:
+                  type: string
+                  description: Email of the new user
+                password:
+                  type: string
+                  description: Password of the new user
+                confirmPassword:
+                  type: string
+                  description: Confirm Password of the new user
+                phoneToken:
+                  type: string
+                  description: Phone token for push notifications
+      responses:
+        '201':
+          description: Payment created successfully
+        '400':
+          description: Invalid request
+        '409':
+          description: Email already in use ||
+            Password field doesn't match Confirm Password!

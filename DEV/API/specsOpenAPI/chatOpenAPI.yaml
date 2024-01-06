@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Chat API
+  description: API endpoints for managing chats
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listChats:
+    get:
+      summary: Retrieve all chats
+      responses:
+        '200':
+          description: A list of chats
+      security:
+        - bearerAuth: []
+
+  /listChatsByUserID/{UserID}:
+    get:
+      summary: Retrieve chats by UserID
+      parameters:
+        - in: path
+          name: UserID
+          required: true
+          schema:
+            type: string
+          description: ID of the user to get chats for
+      responses:
+        '200':
+          description: A list of chats for the specified user
+        '404':
+          description: User not found
+      security:
+        - bearerAuth: []
+
+  /listChat/{ID}:
+    get:
+      summary: Retrieve a single chat by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the chat to retrieve
+      responses:
+        '200':
+          description: A single chat object
+        '404':
+          description: Chat not found
+      security:
+        - bearerAuth: []
+
+  /createChat:
+    post:
+      summary: Create a new chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ChatTypeID:
+                  type: number
+                  minimum: 1
+                  description: ID of the chat type
+      responses:
+        '201':
+          description: Chat created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: []
+
+  /updateChat/{ID}:
+    put:
+      summary: Update a chat by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the chat to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ChatTypeID:
+                  type: number
+                  minimum: 1
+                  description: ID of the chat type
+      responses:
+        '200':
+          description: Chat updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Chat not found
+      security:
+        - bearerAuth: []
+
+  /deleteChat/{ID}:
+    delete:
+      summary: Delete a chat by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the chat to delete
+      responses:
+        '204':
+          description: Chat deleted successfully
+        '404':
+          description: Chat not found
+      security:
+        - bearerAuth: []

@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: Application API
+  description: API endpoints for managing applications
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listApplications:
+    get:
+      summary: Retrieve all applications
+      responses:
+        '200':
+          description: A list of applications
+      security:
+        - bearerAuth: [ ]
+
+  /listApplication/{ID}:
+    get:
+      summary: Retrieve a single application by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the application to retrieve
+      responses:
+        '200':
+          description: A single application object
+        '404':
+          description: Application not found
+      security:
+        - bearerAuth: []
+
+  /createApplication:
+    post:
+      summary: Create a new application
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sosNumber:
+                  type: number
+                  description: SOS number of the user
+                courseName:
+                  type: string
+                  description: User course
+                courseYearAttended:
+                  type: string
+                  description: Number of years of the user's course
+                courseYearStarted:
+                  type: string
+                  description: Year in which the user started studying
+                lastYearStatus:
+                  type: boolean
+                  description: User status in the last year
+                socialBenefits:
+                  type: boolean
+                  description: Social benefits of the user
+                observations:
+                  type: string
+                  description: Necessary observations about the user
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the user
+                RoomTypeID:
+                  type: number
+                  minimum: 1
+                  description: ID of the room type
+                ResidenceID:
+                  type: number
+                  minimum: 1
+                  description: ID of the residence
+      responses:
+        '201':
+          description: Application created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: []
+
+  /updateApplication/{ID}:
+    put:
+      summary: Update a application by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the application to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sosNumber:
+                  type: number
+                  description: SOS number of the user
+                courseName:
+                  type: string
+                  description: User course
+                courseYearAttended:
+                  type: string
+                  description: Number of years of the user's course
+                courseYearStarted:
+                  type: string
+                  description: Year in which the user started studying
+                lastYearStatus:
+                  type: boolean
+                  description: User status in the last year
+                socialBenefits:
+                  type: boolean
+                  description: Social benefits of the user
+                observations:
+                  type: string
+                  description: Necessary observations about the user
+      responses:
+        '200':
+          description: Application updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Application not found
+      security:
+        - bearerAuth: []
+
+  /deleteApplication/{ID}:
+    delete:
+      summary: Delete a application by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the application to delete
+      responses:
+        '204':
+          description: Application deleted successfully
+        '404':
+          description: Application not found
+      security:
+        - bearerAuth: []
+
+
+

@@ -1,0 +1,140 @@
+openapi: 3.0.3
+info:
+  title: Cleaning API
+  description: API endpoints for managing cleanings
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listCleanings:
+    get:
+      summary: Retrieve all cleanings
+      responses:
+        '200':
+          description: A list of cleanings
+      security:
+        - bearerAuth: []
+
+  /listCleaningsByUserId/{UserID}:
+    get:
+      summary: Retrieve cleanings by UserID
+      parameters:
+        - in: path
+          name: UserID
+          required: true
+          schema:
+            type: string
+          description: ID of the user to get cleanings for
+      responses:
+        '200':
+          description: A list of cleanings for the specified user
+        '404':
+          description: User not found
+      security:
+        - bearerAuth: []
+
+  /listCleaning/{ID}:
+    get:
+      summary: Retrieve a single cleaning by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the cleaning to retrieve
+      responses:
+        '200':
+          description: A single cleaning object
+        '404':
+          description: Cleaning not found
+      security:
+        - bearerAuth: []
+
+  /createCleaning:
+    post:
+      summary: Create a new cleaning
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RoomID:
+                  type: number
+                  minimum: 1
+                  description: ID of the room associated with the cleaning
+                UserID:
+                  type: number
+                  minimum: 1
+                  description: ID of the user associated with the cleaning
+      responses:
+        '201':
+          description: Cleaning created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: []
+
+  /updateCleaning/{ID}:
+    put:
+      summary: Update a cleaning by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the cleaning to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - "NotPaid"
+                    - "InProcess"
+                    - "Completed"
+                  description: Status of the cleaning service for the room
+      responses:
+        '200':
+          description: Cleaning updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Cleaning not found
+      security:
+        - bearerAuth: []
+
+  /deleteCleaning/{ID}:
+    delete:
+      summary: Delete a cleaning by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the cleaning to delete
+      responses:
+        '204':
+          description: Cleaning deleted successfully
+        '404':
+          description: Cleaning not found
+      security:
+        - bearerAuth: []

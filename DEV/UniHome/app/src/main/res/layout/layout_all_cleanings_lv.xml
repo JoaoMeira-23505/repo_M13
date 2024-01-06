@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/layoutallcleanings_date_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:text="@string/date_scheduled"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/lightBrown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/layoutallcleanings_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="16sp"
+        android:textColor="@color/lightBrown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutallcleanings_date_title_tv"/>
+
+    <LinearLayout
+        android:id="@+id/layoutallcleanings_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rectangle_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/layoutallcleanings_date_tv"
+        app:layout_constraintBottom_toBottomOf="@id/layoutallcleanings_date_title_tv">
+        <TextView
+            android:id="@+id/layoutallcleanings_status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="15dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/lightBrown"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line_separator_v"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/keppel"
+        app:layout_constraintTop_toBottomOf="@id/layoutallcleanings_ll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

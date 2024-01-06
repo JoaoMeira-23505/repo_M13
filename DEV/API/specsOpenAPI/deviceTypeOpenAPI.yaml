@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: DeviceType API
+  description: API endpoints for managing device types
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/unihome/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /listDeviceTypes:
+    get:
+      summary: Retrieve all device types
+      responses:
+        '200':
+          description: A list of device Types
+
+  /listDeviceType/{ID}:
+    get:
+      summary: Retrieve a single device type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the device type to retrieve
+      responses:
+        '200':
+          description: A single device type object
+        '404':
+          description: Device type not found
+
+  /createDeviceType:
+    post:
+      summary: Create a new device type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the device type
+      responses:
+        '201':
+          description: Device type created successfully
+        '400':
+          description: Invalid request
+      security:
+        - bearerAuth: []
+
+  /updateDeviceType/{ID}:
+    put:
+      summary: Update a device type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the device type to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the device type
+      responses:
+        '200':
+          description: Device type updated successfully
+        '400':
+          description: Invalid request
+        '404':
+          description: Device type not found
+      security:
+        - bearerAuth: []
+
+  /deleteDeviceType/{ID}:
+    delete:
+      summary: Delete a device type by ID
+      parameters:
+        - in: path
+          name: ID
+          required: true
+          schema:
+            type: string
+          description: ID of the device type to delete
+      responses:
+        '204':
+          description: Device type deleted successfully
+        '404':
+          description: Device type not found
+      security:
+        - bearerAuth: []
